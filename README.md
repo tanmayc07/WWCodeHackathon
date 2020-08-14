@@ -32,8 +32,8 @@ Due to spread of COVID-19, vaccine development is being demanded as soon as poss
 
 [Epitope Prediction of Antigen Protein using Attention-Based LSTM Network (2020, bioRxiv)](<https://www.biorxiv.org/content/10.1101/2020.07.27.224121v1>)
 
-#Inspiration
+# Inspiration
 
 Automated methods for B-cell epitope prediction. Machine learning helps rapid vaccine development.
 
-### The csv file input_bcell.csv for the dataset of this project can be downloaded from [here](<https://www.kaggle.com/futurecorporation/epitope-prediction>)
+##### The csv file input_bcell.csv for the dataset of this project can be downloaded from [here](<https://www.kaggle.com/futurecorporation/epitope-prediction>)
