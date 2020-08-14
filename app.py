@@ -38,9 +38,10 @@ def main():
 
     st.sidebar.subheader("Enter the values")
 
-    protein_id = st.sidebar.text_input("Enter the Protein ID:")
+    protein_id = st.sidebar.text_input("Enter the Protein ID: eg. A1JIP3")
 
-    protein_seq = st.sidebar.text_input("Enter the Protein Sequence:")
+    protein_seq = st.sidebar.text_input(
+        "Enter the Protein Sequence: eg. AAQKRPSQRSKYLASASTMDHARHGFLPRHRDTGILDSLGRFFGSDRGAPKRGSGKDGHHAARTTHYGSLPQKAQGHRPQDENPVVHFFKNIVTPRTPPPSQGKGRGLSLSRFSWGAEGQKPGFGYGGRASDYKSAHKGLKGHDAQGTLSKIFKLGGRDSRSGSPMARR")
 
     start_position = st.sidebar.slider(
         "Enter the start position:", min_value=1, max_value=3079, value=1, step=1)
@@ -48,7 +49,8 @@ def main():
     end_position = st.sidebar.slider(
         "Enter the end position:", min_value=6, max_value=3086, value=6, step=1)
 
-    peptide_seq = st.sidebar.text_input("Enter the peptide sequence:")
+    peptide_seq = st.sidebar.text_input(
+        "Enter the peptide sequence: eg. YYVPLGTQYT")
 
     chou_fasman = st.sidebar.number_input("Enter the chou fasman value:",
                                           min_value=0.000, max_value=2.000, value=0.500)
