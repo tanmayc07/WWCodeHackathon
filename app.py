@@ -54,6 +54,21 @@ def main():
     stability = st.sidebar.number_input(
         "Enter the stability value:", min_value=5.00, max_value=138.000)
 
+    safe_html = """
+        <div style="background-color:#F4D03F;padding:10px;">
+            <h2 style="color:white;text-align:center;">Safe</h2>
+        </div>
+    """
+
+    danger_html = """
+        <div background-color:#F08080;padding:10px>
+            <h2 style="color:black;text-align:center;">Danger</h2>
+        </div>
+    """
+
+    if st.sidebar.button("predict"):
+        st.success("Success")
+
 
 if __name__ == '__main__':
     main()
