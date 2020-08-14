@@ -2,6 +2,26 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+from sklearn.preprocessing import MinMaxScaler
+
+model = pickle.load(open('model/extra_tree_classifier.pkl', 'rb'))
+
+
+def predict_input(parent_protein_id, protein_seq, start_position, end_position, peptide_seq, chou_fasman, emini, kolaskar_tongaonkar, parker, isoelectric_point, aromaticity, hydrophobicity, stability):
+
+    array = np.array([[parent_protein_id, protein_seq, start_position, end_position, peptide_seq, chou_fasman,
+                       emini, kolaskar_tongaonkar, parker, isoelectric_point, aromaticity, hydrophobicity, stability]])
+    array = pd.DataFrame(array)
+    array[0] = array[0].astype('category').cat.codes
+    array[1] = array[1].astype('category').cat.codes
+    array[4] = array[4].astype('category').cat.codes
+
+    minmax_scaler = MinMaxScaler()
+    input = minmax_scaler.fit_transform((array))
+    # prediction = model.predict_proba(input)
+    prediction = model.predict(input)
+    # print(prediction)
+    return int(prediction)
 
 
 def main():
@@ -56,18 +76,25 @@ def main():
 
     safe_html = """
         <div style="background-color:#F4D03F;padding:10px;">
-            <h2 style="color:white;text-align:center;">Safe</h2>
+            <h2 style="color:white;text-align:center;">You are safe!!</h2>
         </div>
     """
 
     danger_html = """
-        <div background-color:#F08080;padding:10px>
-            <h2 style="color:black;text-align:center;">Danger</h2>
+        <div style="background-color:#F08080;padding:10px">
+            <h2 style="color:black;text-align:center;">You might be in danger!!</h2>
         </div>
     """
 
     if st.sidebar.button("predict"):
-        st.success("Success")
+        output = predict_input(protein_id, protein_seq, start_position, end_position, peptide_seq, chou_fasman,
+                               emini, kolaskar_tongaonkar, parker, isoelectric_point, aromaticity, hydrophobicity, stability)
+        st.success(f"The predicted class is {output}")
+
+        if output == 1:
+            st.markdown(danger_html, unsafe_allow_html=True)
+        else:
+            st.markdown(safe_html, unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
