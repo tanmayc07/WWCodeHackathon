@@ -78,13 +78,13 @@ def main():
 
     safe_html = """
         <div style="background-color:#F4D03F;padding:10px;">
-            <h2 style="color:white;text-align:center;">You are safe!!</h2>
+            <h2 style="color:white;text-align:center;">The record contains antibodies without inducing properties!!</h2>
         </div>
     """
 
     danger_html = """
         <div style="background-color:#F08080;padding:10px">
-            <h2 style="color:black;text-align:center;">You might be in danger!!</h2>
+            <h2 style="color:black;text-align:center;">The record contains antibodies wit inducing properties!!</h2>
         </div>
     """
 
